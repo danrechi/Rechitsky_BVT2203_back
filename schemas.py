@@ -1,6 +1,4 @@
 from pydantic import BaseModel
-from typing import Optional, Dict
-
 class VacancyCreate(BaseModel):
     id: int
     city: str
