@@ -25,7 +25,15 @@
 ### Запуск с использованием Docker
 
 1. Убеждаемся, что Docker и Docker Compose установлен.
-2. Переходим в корневую директорию проекта и запускаем Docker Compose командой:
+2. Создаем директорию проекта и переходим в директорию с backend:
+    ```bash
+    cd backend
+    ```
+3. Меняем в docker-compose.yml:
+   1) В backend: environment: DATABASE_URL на свои данные
+   2) В frontend: context: на ../<your_directory_withfront>
+
+4. Запускаем Docker Compose командой
     ```bash
     docker-compose up --build
     ```
