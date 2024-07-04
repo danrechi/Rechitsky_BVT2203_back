@@ -69,3 +69,12 @@ def load_vacancies_on_startup():
 def get_vacancies(db: Session = Depends(get_db)):
     vacancies = db.query(Vacancy).all()
     return vacancies
+
+@app.on_event("shutdown")
+def shutdown():
+    db = Session(bind=engine)
+    try:
+        db.query(Vacancy).delete()
+        db.commit()
+    finally:
+        db.close()
