@@ -21,6 +21,7 @@ BASE_URL = "https://api.hh.ru/vacancies"
 # Создание таблиц
 @app.on_event("startup")
 def startup():
+    Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     load_vacancies_on_startup()
 
